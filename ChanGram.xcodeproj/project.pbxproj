@@ -32,6 +32,9 @@
 		FE64457F2824CA0D001F22A7 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64457E2824CA0D001F22A7 /* MessageView.swift */; };
 		FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F292824CB8B009D93BC /* CommentModel.swift */; };
 		FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F2B2824D047009D93BC /* BrowseView.swift */; };
+		FEBFFA0B28250F2B007A4188 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */; };
+		FEBFFA0F28251083007A4188 /* SigninWithAppleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */; };
+		FEBFFA11282512D0007A4188 /* OnboardingViewPart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA10282512D0007A4188 /* OnboardingViewPart2.swift */; };
 		FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B62824D12300EB8E21 /* CarouselView.swift */; };
 		FEC062B92824D99B00EB8E21 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B82824D99B00EB8E21 /* ImageGridView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,9 @@
 		FE64457E2824CA0D001F22A7 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FE780F292824CB8B009D93BC /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		FE780F2B2824D047009D93BC /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCustom.swift; sourceTree = "<group>"; };
+		FEBFFA10282512D0007A4188 /* OnboardingViewPart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewPart2.swift; sourceTree = "<group>"; };
 		FEC062B62824D12300EB8E21 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		FEC062B82824D99B00EB8E21 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +145,8 @@
 				FE53F6872824FFDA001722B3 /* SettingsEditTextView.swift */,
 				FE53F68928250354001722B3 /* SettingEditImageView.swift */,
 				FE53F68B282508CA001722B3 /* SignupView.swift */,
+				FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */,
+				FEBFFA10282512D0007A4188 /* OnboardingViewPart2.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 				FE53F67F2824F178001722B3 /* ProfileHeaderView.swift */,
 				FE53F6832824F919001722B3 /* SettingsLabelView.swift */,
 				FE53F6852824FAFD001722B3 /* SettingsRowView.swift */,
+				FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -250,6 +259,7 @@
 				FE6445742824BE0E001F22A7 /* FeedView.swift in Sources */,
 				FE6445792824C213001F22A7 /* PostModel.swift in Sources */,
 				FE53F68A28250354001722B3 /* SettingEditImageView.swift in Sources */,
+				FEBFFA0F28251083007A4188 /* SigninWithAppleCustom.swift in Sources */,
 				FE53F6842824F919001722B3 /* SettingsLabelView.swift in Sources */,
 				FE53F67C2824EADD001722B3 /* PostImageView.swift in Sources */,
 				FE6445602824B435001F22A7 /* ContentView.swift in Sources */,
@@ -265,11 +275,13 @@
 				FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */,
 				FE64457D2824C84F001F22A7 /* CommentsView.swift in Sources */,
 				FE53F6802824F178001722B3 /* ProfileHeaderView.swift in Sources */,
+				FEBFFA0B28250F2B007A4188 /* OnboardingView.swift in Sources */,
 				FE53F6782824DF6A001722B3 /* UploadView.swift in Sources */,
 				FE53F67A2824E1ED001722B3 /* ImagePicker.swift in Sources */,
 				FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */,
 				FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */,
 				FE53F6882824FFDA001722B3 /* SettingsEditTextView.swift in Sources */,
+				FEBFFA11282512D0007A4188 /* OnboardingViewPart2.swift in Sources */,
 				FE53F6822824F764001722B3 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
