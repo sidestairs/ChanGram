@@ -20,6 +20,9 @@
 		FE64457D2824C84F001F22A7 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64457C2824C84F001F22A7 /* CommentsView.swift */; };
 		FE64457F2824CA0D001F22A7 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64457E2824CA0D001F22A7 /* MessageView.swift */; };
 		FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F292824CB8B009D93BC /* CommentModel.swift */; };
+		FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F2B2824D047009D93BC /* BrowseView.swift */; };
+		FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B62824D12300EB8E21 /* CarouselView.swift */; };
+		FEC062B92824D99B00EB8E21 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B82824D99B00EB8E21 /* ImageGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		FE64457C2824C84F001F22A7 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		FE64457E2824CA0D001F22A7 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		FE780F292824CB8B009D93BC /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		FE780F2B2824D047009D93BC /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		FEC062B62824D12300EB8E21 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		FEC062B82824D99B00EB8E21 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 				FE64455F2824B435001F22A7 /* ContentView.swift */,
 				FE6445732824BE0E001F22A7 /* FeedView.swift */,
 				FE64457C2824C84F001F22A7 /* CommentsView.swift */,
+				FE780F2B2824D047009D93BC /* BrowseView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -112,6 +119,8 @@
 			children = (
 				FE6445752824BEE2001F22A7 /* PostView.swift */,
 				FE64457E2824CA0D001F22A7 /* MessageView.swift */,
+				FEC062B62824D12300EB8E21 /* CarouselView.swift */,
+				FEC062B82824D99B00EB8E21 /* ImageGridView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -211,9 +220,12 @@
 				FE64457F2824CA0D001F22A7 /* MessageView.swift in Sources */,
 				FE6445722824BD36001F22A7 /* Extensions.swift in Sources */,
 				FE64457B2824C4EF001F22A7 /* PostArrayObject.swift in Sources */,
+				FEC062B92824D99B00EB8E21 /* ImageGridView.swift in Sources */,
 				FE6445762824BEE2001F22A7 /* PostView.swift in Sources */,
+				FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */,
 				FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */,
 				FE64457D2824C84F001F22A7 /* CommentsView.swift in Sources */,
+				FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */,
 				FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
