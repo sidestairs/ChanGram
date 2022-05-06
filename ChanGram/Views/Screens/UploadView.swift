@@ -13,6 +13,7 @@ struct UploadView: View {
     @State var imageSelected: UIImage = UIImage(named:"logo")!
     @State var sourceType:UIImagePickerController.SourceType = .camera
     
+    @State var showPostImageView:Bool = false
     
     var body: some View {
         ZStack {
@@ -42,17 +43,31 @@ struct UploadView: View {
                 .frame( maxWidth: .infinity,  maxHeight: .infinity, alignment: .center)
                 .background(Color.MyTheme.yellowColor)
             }
-            .sheet(isPresented: $showImagePicker) {
+            .sheet(isPresented: $showImagePicker, onDismiss: {
+                segueToPostImageView()
+            }) {
                 ImagePicker(imageSelected: $imageSelected, sourceType: $sourceType)
             }
+            
             
             Image("logo.transparent")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100, height: 100, alignment: .center)
                 .shadow(radius: 12)
+                .fullScreenCover(isPresented: $showPostImageView) {
+                    PostImageView(imageSelected: $imageSelected)
+                }
         }
         .edgesIgnoringSafeArea(.top)
+    }
+    
+    // MARK: FUNCTION
+    
+    func segueToPostImageView() {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            showPostImageView.toggle()
+        }
     }
 }
 

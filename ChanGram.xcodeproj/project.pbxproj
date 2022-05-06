@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		FE53F6782824DF6A001722B3 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6772824DF6A001722B3 /* UploadView.swift */; };
 		FE53F67A2824E1ED001722B3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6792824E1ED001722B3 /* ImagePicker.swift */; };
+		FE53F67C2824EADD001722B3 /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F67B2824EADD001722B3 /* PostImageView.swift */; };
+		FE53F67E2824F09F001722B3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F67D2824F09F001722B3 /* ProfileView.swift */; };
+		FE53F6802824F178001722B3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F67F2824F178001722B3 /* ProfileHeaderView.swift */; };
+		FE53F6822824F764001722B3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6812824F764001722B3 /* SettingsView.swift */; };
+		FE53F6842824F919001722B3 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6832824F919001722B3 /* SettingsLabelView.swift */; };
+		FE53F6862824FAFD001722B3 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6852824FAFD001722B3 /* SettingsRowView.swift */; };
 		FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64455D2824B435001F22A7 /* ChanGramApp.swift */; };
 		FE6445602824B435001F22A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64455F2824B435001F22A7 /* ContentView.swift */; };
 		FE6445622824B436001F22A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6445612824B436001F22A7 /* Assets.xcassets */; };
@@ -30,6 +36,12 @@
 /* Begin PBXFileReference section */
 		FE53F6772824DF6A001722B3 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
 		FE53F6792824E1ED001722B3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		FE53F67B2824EADD001722B3 /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
+		FE53F67D2824F09F001722B3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FE53F67F2824F178001722B3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		FE53F6812824F764001722B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		FE53F6832824F919001722B3 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
+		FE53F6852824FAFD001722B3 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		FE64455A2824B435001F22A7 /* ChanGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChanGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE64455D2824B435001F22A7 /* ChanGramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanGramApp.swift; sourceTree = "<group>"; };
 		FE64455F2824B435001F22A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +127,9 @@
 				FE64457C2824C84F001F22A7 /* CommentsView.swift */,
 				FE780F2B2824D047009D93BC /* BrowseView.swift */,
 				FE53F6772824DF6A001722B3 /* UploadView.swift */,
+				FE53F67B2824EADD001722B3 /* PostImageView.swift */,
+				FE53F67D2824F09F001722B3 /* ProfileView.swift */,
+				FE53F6812824F764001722B3 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -127,6 +142,9 @@
 				FEC062B62824D12300EB8E21 /* CarouselView.swift */,
 				FEC062B82824D99B00EB8E21 /* ImageGridView.swift */,
 				FE53F6792824E1ED001722B3 /* ImagePicker.swift */,
+				FE53F67F2824F178001722B3 /* ProfileHeaderView.swift */,
+				FE53F6832824F919001722B3 /* SettingsLabelView.swift */,
+				FE53F6852824FAFD001722B3 /* SettingsRowView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -222,19 +240,25 @@
 			files = (
 				FE6445742824BE0E001F22A7 /* FeedView.swift in Sources */,
 				FE6445792824C213001F22A7 /* PostModel.swift in Sources */,
+				FE53F6842824F919001722B3 /* SettingsLabelView.swift in Sources */,
+				FE53F67C2824EADD001722B3 /* PostImageView.swift in Sources */,
 				FE6445602824B435001F22A7 /* ContentView.swift in Sources */,
 				FE64457F2824CA0D001F22A7 /* MessageView.swift in Sources */,
 				FE6445722824BD36001F22A7 /* Extensions.swift in Sources */,
 				FE64457B2824C4EF001F22A7 /* PostArrayObject.swift in Sources */,
 				FEC062B92824D99B00EB8E21 /* ImageGridView.swift in Sources */,
+				FE53F6862824FAFD001722B3 /* SettingsRowView.swift in Sources */,
 				FE6445762824BEE2001F22A7 /* PostView.swift in Sources */,
+				FE53F67E2824F09F001722B3 /* ProfileView.swift in Sources */,
 				FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */,
 				FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */,
 				FE64457D2824C84F001F22A7 /* CommentsView.swift in Sources */,
+				FE53F6802824F178001722B3 /* ProfileHeaderView.swift in Sources */,
 				FE53F6782824DF6A001722B3 /* UploadView.swift in Sources */,
 				FE53F67A2824E1ED001722B3 /* ImagePicker.swift in Sources */,
 				FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */,
 				FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */,
+				FE53F6822824F764001722B3 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
