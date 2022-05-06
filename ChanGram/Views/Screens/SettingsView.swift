@@ -34,9 +34,23 @@ struct SettingsView: View {
                 // MARK: SECTION 2: PROFILE
                 GroupBox(label: SettingsLabelView(labelText: "Profile", labelImage: "person.fill")) {
                     
-                    SettingsRowView(leftIcon: "pencil", text: "Display Name", color: Color.MyTheme.purpleColor)
-                    SettingsRowView(leftIcon: "text.quote", text: "Bio", color: Color.MyTheme.purpleColor)
-                    SettingsRowView(leftIcon: "photo", text: "Profile Picture", color: Color.MyTheme.purpleColor)
+                    NavigationLink(destination: SettingsEditTextView(submissionText: "Current Display Name", title: "Display Name", description: "You can edit your display name here, this will be seen by other users on your profile and your post.", placeholder: "Your display name here")) {
+                        
+                        SettingsRowView(leftIcon: "pencil", text: "Display Name", color: Color.MyTheme.purpleColor)
+                    }
+                    
+                    NavigationLink(destination: SettingsEditTextView(submissionText: "Current Bio Here", title: "Profile Bio", description: "Your bio is a great place to let other users know about you.", placeholder: "Your bio here")) {
+                        
+                        SettingsRowView(leftIcon: "text.quote", text: "Bio", color: Color.MyTheme.purpleColor)
+                    }
+                    
+                    
+                    NavigationLink(destination: SettingEditImageView(title: "Profile Image", description: "Your profile image will be showed to everybody.", selectedImage: UIImage(named:"dog1")!)) {
+                        
+                        SettingsRowView(leftIcon: "photo", text: "Profile Picture", color: Color.MyTheme.purpleColor)
+                    }
+                    
+                    
                     SettingsRowView(leftIcon: "figure.walk", text: "Sign out", color: Color.MyTheme.purpleColor)
                 }
                 .padding()
@@ -44,9 +58,24 @@ struct SettingsView: View {
                 // MARK: SECTION 3: Application
                 GroupBox(label: SettingsLabelView(labelText: "Application", labelImage: "apps.iphone")) {
                     
-                    SettingsRowView(leftIcon: "folder.fill", text: "Privacy policy", color: Color.MyTheme.yellowColor)
-                    SettingsRowView(leftIcon: "folder.fill", text: "Terms and Conditions", color: Color.MyTheme.yellowColor)
-                    SettingsRowView(leftIcon: "globe", text: "Website", color: Color.MyTheme.yellowColor)
+                    Button {
+                        openCustomURL(urlString: "https://google.com")
+                    } label: {
+                        SettingsRowView(leftIcon: "folder.fill", text: "Privacy policy", color: Color.MyTheme.yellowColor)
+                    }
+                    
+                    Button {
+                        openCustomURL(urlString: "https://google.com")
+                    } label: {
+                        SettingsRowView(leftIcon: "folder.fill", text: "Terms and Conditions", color: Color.MyTheme.yellowColor)
+                    }
+                    
+                    Button {
+                        openCustomURL(urlString: "https://google.com")
+                    } label: {
+                        SettingsRowView(leftIcon: "globe", text: "Website", color: Color.MyTheme.yellowColor)
+                    }
+
                 }
                 .padding()
                 
@@ -76,6 +105,16 @@ struct SettingsView: View {
         }
         
         
+    }
+    
+    // MARK: FUNCTION
+    
+    func openCustomURL(urlString:String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
