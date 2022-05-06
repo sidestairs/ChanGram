@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE53F6782824DF6A001722B3 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6772824DF6A001722B3 /* UploadView.swift */; };
+		FE53F67A2824E1ED001722B3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE53F6792824E1ED001722B3 /* ImagePicker.swift */; };
 		FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64455D2824B435001F22A7 /* ChanGramApp.swift */; };
 		FE6445602824B435001F22A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64455F2824B435001F22A7 /* ContentView.swift */; };
 		FE6445622824B436001F22A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6445612824B436001F22A7 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE53F6772824DF6A001722B3 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		FE53F6792824E1ED001722B3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		FE64455A2824B435001F22A7 /* ChanGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChanGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE64455D2824B435001F22A7 /* ChanGramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChanGramApp.swift; sourceTree = "<group>"; };
 		FE64455F2824B435001F22A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 				FE6445732824BE0E001F22A7 /* FeedView.swift */,
 				FE64457C2824C84F001F22A7 /* CommentsView.swift */,
 				FE780F2B2824D047009D93BC /* BrowseView.swift */,
+				FE53F6772824DF6A001722B3 /* UploadView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 				FE64457E2824CA0D001F22A7 /* MessageView.swift */,
 				FEC062B62824D12300EB8E21 /* CarouselView.swift */,
 				FEC062B82824D99B00EB8E21 /* ImageGridView.swift */,
+				FE53F6792824E1ED001722B3 /* ImagePicker.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -225,6 +231,8 @@
 				FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */,
 				FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */,
 				FE64457D2824C84F001F22A7 /* CommentsView.swift in Sources */,
+				FE53F6782824DF6A001722B3 /* UploadView.swift in Sources */,
+				FE53F67A2824E1ED001722B3 /* ImagePicker.swift in Sources */,
 				FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */,
 				FE64455E2824B435001F22A7 /* ChanGramApp.swift in Sources */,
 			);
@@ -358,6 +366,8 @@
 				DEVELOPMENT_TEAM = B6B99GV83S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera at the user's request to take a photo.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This allows the app to access the photo library to import or save a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -389,6 +399,8 @@
 				DEVELOPMENT_TEAM = B6B99GV83S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera at the user's request to take a photo.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This allows the app to access the photo library to import or save a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
