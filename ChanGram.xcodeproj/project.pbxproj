@@ -35,6 +35,7 @@
 		FEBFFA0B28250F2B007A4188 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */; };
 		FEBFFA0F28251083007A4188 /* SigninWithAppleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */; };
 		FEBFFA11282512D0007A4188 /* OnboardingViewPart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA10282512D0007A4188 /* OnboardingViewPart2.swift */; };
+		FEBFFA1328251912007A4188 /* LikeAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA1228251912007A4188 /* LikeAnimationView.swift */; };
 		FEC062B72824D12300EB8E21 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B62824D12300EB8E21 /* CarouselView.swift */; };
 		FEC062B92824D99B00EB8E21 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC062B82824D99B00EB8E21 /* ImageGridView.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninWithAppleCustom.swift; sourceTree = "<group>"; };
 		FEBFFA10282512D0007A4188 /* OnboardingViewPart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewPart2.swift; sourceTree = "<group>"; };
+		FEBFFA1228251912007A4188 /* LikeAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAnimationView.swift; sourceTree = "<group>"; };
 		FEC062B62824D12300EB8E21 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		FEC062B82824D99B00EB8E21 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +165,7 @@
 				FE53F6832824F919001722B3 /* SettingsLabelView.swift */,
 				FE53F6852824FAFD001722B3 /* SettingsRowView.swift */,
 				FEBFFA0E28251083007A4188 /* SigninWithAppleCustom.swift */,
+				FEBFFA1228251912007A4188 /* LikeAnimationView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				FE53F6862824FAFD001722B3 /* SettingsRowView.swift in Sources */,
 				FE6445762824BEE2001F22A7 /* PostView.swift in Sources */,
 				FE53F68C282508CA001722B3 /* SignupView.swift in Sources */,
+				FEBFFA1328251912007A4188 /* LikeAnimationView.swift in Sources */,
 				FE53F67E2824F09F001722B3 /* ProfileView.swift in Sources */,
 				FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */,
 				FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */,
