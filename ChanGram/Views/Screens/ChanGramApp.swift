@@ -6,12 +6,32 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import GoogleSignIn
 
 @main
 struct ChanGramApp: App {
+    
+    @StateObject var viewModel = SignInWithGoogle()
+    
+    init() {
+        setupAuthentication()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
+            //                .onOpenURL { URL in
+            //                    GIDSignIn.sharedInstance.handle(URL)
+            //                }
         }
+    }
+}
+
+
+extension ChanGramApp {
+    private func setupAuthentication() {
+        FirebaseApp.configure()
     }
 }

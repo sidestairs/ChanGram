@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct OnboardingViewPart2: View {
     @State var displayName: String = ""
@@ -15,6 +16,7 @@ struct OnboardingViewPart2: View {
     @State var imageSelected: UIImage = UIImage(named: "logo")!
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
+    private let user = GIDSignIn.sharedInstance.currentUser
     
     var body: some View {
         

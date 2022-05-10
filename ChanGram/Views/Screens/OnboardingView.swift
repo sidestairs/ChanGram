@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct OnboardingView: View {
+    @EnvironmentObject var viewModel: SignInWithGoogle
+    
     @Environment(\.presentationMode) var presentationMode
     @State var showOnboardingPart2:Bool = false
+    @State var showError:Bool = false
     
     var body: some View {
         VStack( spacing: 10) {
@@ -24,15 +28,20 @@ struct OnboardingView: View {
                 .fontWeight(.bold)
                 .foregroundColor(Color.MyTheme.purpleColor)
             
+            // Sign in with Apple
             Button {
-                showOnboardingPart2.toggle()
+                //                showOnboardingPart2.toggle()
+                SignInWithApple.instance.startSignInWithAppleFlow(view: self)
             } label: {
                 SigninWithAppleCustom()
-                    .frame(width: .infinity, height: 60, alignment: .center)
+                    .frame(height: 60)
+                //                    .frame(maxWidth: .infinity)
             }
             
+            // Sign in with Google
             Button {
-                showOnboardingPart2.toggle()
+                //                showOnboardingPart2.toggle()
+                viewModel.signIn()
             } label: {
                 HStack {
                     Image(systemName: "globe")
@@ -59,7 +68,7 @@ struct OnboardingView: View {
             }
             .accentColor(.black)
             
-
+            
         }
         .padding(.all, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -68,6 +77,15 @@ struct OnboardingView: View {
         .fullScreenCover(isPresented: $showOnboardingPart2) {
             OnboardingViewPart2()
         }
+        .alert(isPresented: $showError) {
+            return Alert(title: Text("Error signing in"))
+        }
+    }
+    
+    // MARK: FUNCTION
+    
+    func connectToFirebase(name:String, email:String, provider:String, credential:AuthCredential) {
+        
     }
 }
 
