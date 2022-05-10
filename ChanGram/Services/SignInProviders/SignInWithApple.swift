@@ -12,14 +12,14 @@ import AuthenticationServices
 import FirebaseAuth
 
 class SignInWithApple: NSObject, ASAuthorizationControllerDelegate {
+    
     static let instance = SignInWithApple()
     var onboardingView: OnboardingView!
-    
+
     // Unhashed nonce.
     fileprivate var currentNonce: String?
-    
-    
-    func startSignInWithAppleFlow(view:OnboardingView) {
+
+    func startSignInWithAppleFlow(view: OnboardingView) {
         self.onboardingView = view
         
         let nonce = randomNonceString()
@@ -28,67 +28,67 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate {
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = sha256(nonce)
-        
+
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
-        //        authorizationController.presentationContextProvider = self
+        //authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-    
+
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
-            String(format: "%02x", $0)
+            return String(format: "%02x", $0)
         }.joined()
-        
+
         return hashString
     }
     
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
-        let charset: [Character] =
-        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        let charset: Array<Character> = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
-        
+
         while remainingLength > 0 {
             let randoms: [UInt8] = (0 ..< 16).map { _ in
                 var random: UInt8 = 0
                 let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
                 if errorCode != errSecSuccess {
-                    fatalError(
-                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-                    )
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
                 }
                 return random
             }
-            
+
             randoms.forEach { random in
                 if remainingLength == 0 {
                     return
                 }
-                
+
                 if random < charset.count {
                     result.append(charset[Int(random)])
                     remainingLength -= 1
                 }
             }
         }
-        
+
         return result
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
+            
             guard let appleIDToken = appleIDCredential.identityToken else {
                 print("Unable to fetch identity token")
                 return
             }
+            
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
@@ -96,7 +96,7 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate {
             
             let email = appleIDCredential.email ?? ""
             
-            var name = "Default Name"
+            var name = "Your name here"
             if let fullName = appleIDCredential.fullName {
                 let formatter = PersonNameComponentsFormatter()
                 name = formatter.string(from: fullName)
@@ -107,20 +107,9 @@ class SignInWithApple: NSObject, ASAuthorizationControllerDelegate {
                                                       idToken: idTokenString,
                                                       rawNonce: nonce)
             
-            //            self.onboardingView.connectToFirebase(name: name, email: email, provider: "Apple", credential: credential)
-            //            print("Sign in to firebase now with email: \(email) and with the name: \(name) \(appleIDCredential)")
-            // Sign in with Firebase.
-            Auth.auth().signIn(with: credential) { (authResult, error) in
-                if (error != nil) {
-                    // Error. If error.code == .MissingOrInvalidNonce, make sure
-                    // you're sending the SHA256-hashed nonce as a hex string with
-                    // your request to Apple.
-                    print("error")
-                    return
-                }
-                // User is signed in to Firebase with Apple.
-                // ...
-            }
+            print("authorizationController: \(email) and with the name: \(name)")
+            self.onboardingView.connectToFirebase(name: name, email: email, provider: "apple", credential: credential)
+//            self.onboardingView.connectToFirebaseApple(credential: credential)
         }
     }
     

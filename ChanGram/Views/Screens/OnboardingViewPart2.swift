@@ -9,8 +9,16 @@ import SwiftUI
 import GoogleSignIn
 
 struct OnboardingViewPart2: View {
-    @State var displayName: String = ""
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @Binding var displayName: String
+    @Binding var email:String
+    @Binding var providerId:String
+    @Binding var provider:String
+    
     @State var showImagePicker: Bool = false
+    @State var showError:Bool = false
     
     // Image picker
     @State var imageSelected: UIImage = UIImage(named: "logo")!
@@ -60,17 +68,46 @@ struct OnboardingViewPart2: View {
         } content: {
             ImagePicker(imageSelected: $imageSelected, sourceType: $sourceType)
         }
+        .alert(isPresented: $showError) {
+            return Alert(title: Text("Error creating profile"))
+        }
     }
     
     // MARK: FUNCTION
     
     func createProfile() {
-        
+        print("Create Profile")
+        AuthService.instance.createNewUserInDatabase(name: displayName, email: email, providerId: providerId, provider: provider, profileImage: imageSelected) { returnedUserId in
+            if let userId = returnedUserId {
+                // success
+                print("Successfully create new users")
+                
+                AuthService.instance.loginUserToApp(userId: userId) { success in
+                    if (success) {
+                        print("user logged in")
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now()+1.0) {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                        
+                    } else {
+                        print("error logging in")
+                    }
+                }
+                
+            } else {
+                // error
+                print("Error creating user in database")
+                self.showError.toggle()
+            }
+        }
     }
 }
 
 struct OnboardingViewPart2_Previews: PreviewProvider {
+    @State static var testString: String = "Test"
+    
     static var previews: some View {
-        OnboardingViewPart2()
+        OnboardingViewPart2(displayName: $testString, email: $testString, providerId: $testString, provider: $testString)
     }
 }
