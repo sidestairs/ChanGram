@@ -26,7 +26,9 @@ class ImageManager {
         let path = getProfileImagePath(userId: userId)
         
         // Save image to path
-        uploadImage(path: path, image: image) { _ in }
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.uploadImage(path: path, image: image) { _ in }
+        }
     }
     
     func uploadPostImage(postId:String, image:UIImage, handler:@escaping(_ success:Bool)->()) {
@@ -34,8 +36,12 @@ class ImageManager {
         let path = getPostImagePath(postId: postId)
         
         // save image to path
-        uploadImage(path: path, image: image) { success in
-            handler(success)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.uploadImage(path: path, image: image) { success in
+                DispatchQueue.main.async {
+                    handler(success)
+                }
+            }
         }
     }
     
@@ -43,21 +49,27 @@ class ImageManager {
         // get the path where the image is saved
         let path = getProfileImagePath(userId: userId)
         
-        // download the image from path
-        downloadImage(path: path) { returnedImage in
-            handler(returnedImage)
+        // Download the image from path
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.downloadImage(path: path) { returnedImage in
+                DispatchQueue.main.async {
+                    handler(returnedImage)
+                }
+            }
         }
-        
     }
     
     func downloadPostImage(postId: String, handler: @escaping(_ image:UIImage?)->()) {
         let path = getPostImagePath(postId: postId)
         
-        //
-        downloadImage(path: path) { returnedImage in
-            handler(returnedImage)
+        // Download post images
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.downloadImage(path: path) { returnedImage in
+                DispatchQueue.main.async {
+                    handler(returnedImage)
+                }
+            }
         }
-        
     }
     
     // MARK: PRIVATE FUNCTIONS
@@ -95,13 +107,13 @@ class ImageManager {
             }
         }
         
-        
         // final data
         guard let finalData = image.jpegData(compressionQuality: compression) else {
             print("Error getting data from image")
             handler(false)
             return
         }
+        
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
@@ -139,5 +151,4 @@ class ImageManager {
             }
         }
     }
-    
 }

@@ -12,6 +12,8 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var showSignOutError:Bool = false
     
+    let haptic = UINotificationFeedbackGenerator()
+    
     var body: some View {
         
         NavigationView {
@@ -116,6 +118,11 @@ struct SettingsView: View {
     }
     
     // MARK: FUNCTION
+    
+    func dismissView() {
+        self.haptic.notificationOccurred(.success)
+        self.presentationMode.wrappedValue.dismiss()
+    }
     
     func openCustomURL(urlString:String) {
         guard let url = URL(string: urlString) else {return}

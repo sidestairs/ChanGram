@@ -38,6 +38,7 @@
 		FE780F2A2824CB8B009D93BC /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F292824CB8B009D93BC /* CommentModel.swift */; };
 		FE780F2C2824D047009D93BC /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE780F2B2824D047009D93BC /* BrowseView.swift */; };
 		FEBD5FFF282BB9CF00D6D11E /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD5FFE282BB9CF00D6D11E /* LazyView.swift */; };
+		FEBD6001282BBF5A00D6D11E /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD6000282BBF5A00D6D11E /* AnalyticsService.swift */; };
 		FEBEAAA2282A27B4008076B8 /* EnumsAndStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBEAAA1282A27B4008076B8 /* EnumsAndStructs.swift */; };
 		FEBEAAA5282A2900008076B8 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBEAAA4282A2900008076B8 /* ImageManager.swift */; };
 		FEBFFA0B28250F2B007A4188 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */; };
@@ -86,6 +87,7 @@
 		FE780F292824CB8B009D93BC /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		FE780F2B2824D047009D93BC /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		FEBD5FFE282BB9CF00D6D11E /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		FEBD6000282BBF5A00D6D11E /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		FEBEAAA1282A27B4008076B8 /* EnumsAndStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumsAndStructs.swift; sourceTree = "<group>"; };
 		FEBEAAA4282A2900008076B8 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		FEBFFA0A28250F2B007A4188 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				FE2B39A4282A18DA007DA876 /* AuthService.swift */,
 				FED2C9B1282B7E600099DEDB /* DataService.swift */,
+				FEBD6000282BBF5A00D6D11E /* AnalyticsService.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			files = (
 				FE6445742824BE0E001F22A7 /* FeedView.swift in Sources */,
 				FE2B39A5282A18DA007DA876 /* AuthService.swift in Sources */,
+				FEBD6001282BBF5A00D6D11E /* AnalyticsService.swift in Sources */,
 				FE6445792824C213001F22A7 /* PostModel.swift in Sources */,
 				FEBEAAA2282A27B4008076B8 /* EnumsAndStructs.swift in Sources */,
 				FE53F68A28250354001722B3 /* SettingEditImageView.swift in Sources */,

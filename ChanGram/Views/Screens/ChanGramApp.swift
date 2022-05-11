@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import GoogleSignIn
+import FirebaseAnalytics
 
 @main
 struct ChanGramApp: App {
@@ -16,6 +17,7 @@ struct ChanGramApp: App {
     
     init() {
         setupAuthentication()
+        AnalyticService.instance.pageView(title: "init")
     }
     
     var body: some Scene {
