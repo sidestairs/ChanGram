@@ -33,7 +33,14 @@ struct PostView: View {
             if (showHeaderAndFooter) {
                 HStack {
                     
-                    NavigationLink(destination: ProfileView(isMyProfile: false, profileDisplayName: post.username, profileUserId: post.userId, posts: PostArrayObject(userId: post.userId))) {
+                    NavigationLink(
+                        destination: LazyView(content: {
+                            ProfileView(isMyProfile: false,
+                                         profileDisplayName: post.username,
+                                         profileUserId: post.userId,
+                                         posts: PostArrayObject(userId: post.userId))
+                        })
+                    ) {
                         Image(uiImage: profileImage)
                             .resizable()
                             .scaledToFill()
@@ -58,9 +65,6 @@ struct PostView: View {
                     .actionSheet(isPresented: $showActionSheet) {
                         getActionSheet()
                     }
-                    
-                    
-                    
                 }
                 .padding(.all, 6)
             }
