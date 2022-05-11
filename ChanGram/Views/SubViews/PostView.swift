@@ -11,13 +11,15 @@ struct PostView: View {
     
     @State var post:PostModel
     var showHeaderAndFooter: Bool
-    @State var postImage:UIImage = UIImage(named: "dog1")!
     
     @State var animateLike:Bool = false
     @State var addHeartAnimationToView:Bool
     
     @State var showActionSheet:Bool = false
     @State var actionSheetType:PostActionSheetOption = .general
+    
+    @State var profileImage:UIImage = UIImage(named: "logo.loading")!
+    @State var postImage:UIImage = UIImage(named: "logo.loading")!
     
     enum PostActionSheetOption {
         case general
@@ -31,8 +33,8 @@ struct PostView: View {
             if (showHeaderAndFooter) {
                 HStack {
                     
-                    NavigationLink(destination: ProfileView(isMyProfile: false, profileDisplayName: post.username, profileUserId: post.userId)) {
-                        Image("dog1")
+                    NavigationLink(destination: ProfileView(isMyProfile: false, profileDisplayName: post.username, profileUserId: post.userId, posts: PostArrayObject(userId: post.userId))) {
+                        Image(uiImage: profileImage)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 30, height: 30, alignment: .center)
@@ -124,6 +126,9 @@ struct PostView: View {
             }
             
         }
+        .onAppear {
+            getImages()
+        }
     }
     
     // MARK: FUNCTION
@@ -185,6 +190,19 @@ struct PostView: View {
     
     func reportPost(reason:String) {
         print(reason)
+    }
+    
+    func getImages() {
+        ImageManager.instance.downloadProfileImage(userId: post.userId) { returnedImage in
+            if let image = returnedImage {
+                self.profileImage = image
+            }
+        }
+        ImageManager.instance.downloadPostImage(postId: post.postId) { returnedPostImage in
+            if let postImage = returnedPostImage {
+                self.postImage = postImage
+            }
+        }
     }
     
     func sharePost() {

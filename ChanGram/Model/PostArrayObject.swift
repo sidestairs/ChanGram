@@ -25,9 +25,37 @@ class PostArrayObject:ObservableObject {
         self.dataArray.append(post4)
     }
     
-    /// Use for single post selection
+    /// USED FOR SINGLE POST SELECTION
     init(post:PostModel) {
         self.dataArray.append(post)
+    }
+    
+    /// USED FOR GETTING POST FOR USER PROFILE
+    init(userId:String) {
+        
+        print("get post from user id \(userId)")
+        
+        DataService.instance.downloadPostForUser(userId: userId) { returnedPosts in
+            let sortedPost = returnedPosts.sorted { postA, postB in
+                return postA.dateCreated > postB.dateCreated
+            }
+            self.dataArray.append(contentsOf: sortedPost)
+        }
+    }
+    
+    /// USED FOR FEED
+    init(shuffle:Bool) {
+        
+        print("getting all feed post")
+        
+        DataService.instance.downloadPostForFeed { returnedPosts in
+            if shuffle {
+                let shuffledPost = returnedPosts.shuffled()
+                self.dataArray.append(contentsOf: shuffledPost)
+            } else {
+                self.dataArray.append(contentsOf: returnedPosts)
+            }
+        }
     }
     
 }

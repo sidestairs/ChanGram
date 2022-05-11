@@ -21,3 +21,11 @@ struct CurrentUserDefaults {
     static let userId = "user_id"
     static let bio = "bio"
 }
+
+struct DatabasePostField {
+    static let postId = "post_id"
+    static let userId = "user_id"
+    static let displayName = "display_name"
+    static let caption = "caption"
+    static let dateCreated = "date_created"
+}

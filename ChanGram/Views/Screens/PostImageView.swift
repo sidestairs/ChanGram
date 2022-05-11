@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import simd
 
 struct PostImageView: View {
     
@@ -13,6 +14,12 @@ struct PostImageView: View {
     @State var captionText:String = ""
     @Binding var imageSelected:UIImage
     
+    @AppStorage(CurrentUserDefaults.userId) var currentUserId:String?
+    @AppStorage(CurrentUserDefaults.displayName) var currentDisplayName:String?
+    
+    // alert
+    @State var showAlert:Bool = false
+    @State var uploadPostSuccessfully:Bool = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -62,7 +69,9 @@ struct PostImageView: View {
                 }
                 .accentColor(Color.MyTheme.yellowColor)
 
-                
+            }
+            .alert(isPresented: $showAlert) { () -> Alert in
+                getAlert()
             }
         }
     }
@@ -71,6 +80,25 @@ struct PostImageView: View {
     
     func postPicture() {
         print("Post picture to database here")
+        guard let userId = currentUserId, let displayName = currentDisplayName else {
+            print("error getting user id")
+            return
+        }
+        
+        DataService.instance.uploadPost(image: imageSelected, caption: captionText, displayName: displayName, userId: userId) { success in
+            self.uploadPostSuccessfully = true
+            self.showAlert.toggle()
+        }
+    }
+    
+    func getAlert() -> Alert {
+        if uploadPostSuccessfully {
+            return Alert(title: Text("Successful uploaded post"), message: nil, dismissButton: .default(Text("ok")) {
+                self.presentationMode.wrappedValue.dismiss()
+            })
+        } else {
+            return Alert(title:Text("Error uploading post"))
+        }
     }
 }
 

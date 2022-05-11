@@ -9,17 +9,22 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var isMyProfile: Bool
     @State var profileDisplayName: String
     var profileUserId : String
     
-    var posts = PostArrayObject()
+    @State var profileImage:UIImage = UIImage(named:"logo.loading")!
+    
+    var posts:PostArrayObject
     
     @State var showsSettings: Bool = false
     
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ProfileHeaderView(profileDisplayName: $profileDisplayName)
+            ProfileHeaderView(profileDisplayName: $profileDisplayName, profileImage: $profileImage)
             Divider()
             ImageGridView(posts: posts)
         }
@@ -32,8 +37,21 @@ struct ProfileView: View {
                 .accentColor(Color.MyTheme.purpleColor)
                 .opacity(isMyProfile ? 1.0 : 0.0)
         }))
+        .onAppear(perform: {
+            getProfileImage()
+        })
         .sheet(isPresented: $showsSettings) {
             SettingsView()
+        }
+    }
+    
+    // MARK: FUNCTIONS
+    
+    func getProfileImage() {
+        ImageManager.instance.downloadProfileImage(userId: profileUserId) { returnedImage in
+            if let image = returnedImage {
+                self.profileImage = image
+            }
         }
     }
 }
@@ -42,7 +60,7 @@ struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            ProfileView(isMyProfile: true, profileDisplayName: "joe", profileUserId: "")
+            ProfileView(isMyProfile: true, profileDisplayName: "joe", profileUserId: "", posts: PostArrayObject(userId: ""))
         }
     }
 }

@@ -12,12 +12,15 @@ struct ContentView: View {
     
     
     @AppStorage(CurrentUserDefaults.userId) var currentUserId:String?
-//    var currentUserId : String? = nil
+    @AppStorage(CurrentUserDefaults.displayName) var currentUserDisplayName:String?
+    
+    let feedpost = PostArrayObject(shuffle: false)
+    let browsePost = PostArrayObject(shuffle: true)
     
     var body: some View {
         TabView {
             NavigationView {
-                FeedView(posts:PostArrayObject(), title: "Feed")
+                FeedView(posts:feedpost, title: "Feed")
             }
             .tabItem {
                 Image(systemName: "book.fill")
@@ -25,7 +28,7 @@ struct ContentView: View {
             }
             
             NavigationView {
-                BrowseView()
+                BrowseView(post: browsePost)
             }
             .tabItem {
                 Image(systemName: "magnifyingglass")
@@ -39,9 +42,9 @@ struct ContentView: View {
                 }
             
             ZStack {
-                if (currentUserId != nil) {
+                if let userId = currentUserId, let displayName = currentUserDisplayName {
                     NavigationView {
-                        ProfileView(isMyProfile: true, profileDisplayName: "My Profile", profileUserId: "")
+                        ProfileView(isMyProfile: true, profileDisplayName: displayName, profileUserId: userId, posts: PostArrayObject(userId: userId))
                     }
                 } else {
                     SignupView()

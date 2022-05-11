@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BrowseView: View {
-    var post = PostArrayObject()
+    var post: PostArrayObject
     
     
     var body: some View {
@@ -24,7 +24,7 @@ struct BrowseView: View {
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BrowseView()
+            BrowseView(post: PostArrayObject(shuffle: true))
         }
     }
 }

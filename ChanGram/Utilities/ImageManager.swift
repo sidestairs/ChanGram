@@ -9,6 +9,8 @@ import Foundation
 import FirebaseStorage
 import UIKit
 
+let imageCache = NSCache<AnyObject, UIImage>()
+
 class ImageManager {
     
     // MARK: properties
@@ -27,12 +29,49 @@ class ImageManager {
         uploadImage(path: path, image: image) { _ in }
     }
     
+    func uploadPostImage(postId:String, image:UIImage, handler:@escaping(_ success:Bool)->()) {
+        // Get the path to save the images
+        let path = getPostImagePath(postId: postId)
+        
+        // save image to path
+        uploadImage(path: path, image: image) { success in
+            handler(success)
+        }
+    }
+    
+    func downloadProfileImage(userId: String, handler: @escaping(_ image:UIImage?)->()) {
+        // get the path where the image is saved
+        let path = getProfileImagePath(userId: userId)
+        
+        // download the image from path
+        downloadImage(path: path) { returnedImage in
+            handler(returnedImage)
+        }
+        
+    }
+    
+    func downloadPostImage(postId: String, handler: @escaping(_ image:UIImage?)->()) {
+        let path = getPostImagePath(postId: postId)
+        
+        //
+        downloadImage(path: path) { returnedImage in
+            handler(returnedImage)
+        }
+        
+    }
+    
     // MARK: PRIVATE FUNCTIONS
     
     private func getProfileImagePath(userId:String) -> StorageReference {
         let userPath = "users/\(userId)/profile"
         let storagePath = REF_STOR.reference(withPath: userPath)
         
+        return storagePath
+    }
+    
+    private func getPostImagePath(postId:String) -> StorageReference {
+        let postPath = "posts/\(postId)/1"
+        let storagePath = REF_STOR.reference(withPath: postPath)
         return storagePath
     }
     
@@ -78,4 +117,27 @@ class ImageManager {
             }
         }
     }
+    
+    private func downloadImage(path: StorageReference, handler: @escaping(_ image:UIImage?)->()) {
+        
+        if let cacheImage = imageCache.object(forKey: path) {
+            print("image found in cache")
+            handler(cacheImage)
+            return
+        } else {
+            path.getData(maxSize: 27 * 1024 * 1024) { returnedImageData, error in
+                if let data = returnedImageData, let image = UIImage(data: data) {
+                    // success getting image data
+                    imageCache.setObject(image, forKey: path)
+                    handler(image)
+                    return
+                } else {
+                    print("error getting data from path for image")
+                    handler(nil)
+                    return
+                }
+            }
+        }
+    }
+    
 }
