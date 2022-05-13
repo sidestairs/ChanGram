@@ -13,25 +13,27 @@ struct ProfileView: View {
     
     var isMyProfile: Bool
     @State var profileDisplayName: String
-    var profileUserId : String
+    var profileUserId: String
+    @State var profileBio: String = ""
     
-    @State var profileImage:UIImage = UIImage(named:"logo.loading")!
+    @State var profileImage: UIImage = UIImage(named: "logo.loading")!
     
-    var posts:PostArrayObject
+    var posts: PostArrayObject
     
-    @State var showsSettings: Bool = false
+    
+    @State var showSettings: Bool = false
     
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ProfileHeaderView(profileDisplayName: $profileDisplayName, profileImage: $profileImage)
+            ProfileHeaderView(profileDisplayName: $profileDisplayName, profileImage: $profileImage, postArray: posts, profileBio: $profileBio)
             Divider()
             ImageGridView(posts: posts)
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: Button(action: {
-            showsSettings.toggle()
+            showSettings.toggle()
         }, label: {
             Image(systemName: "line.horizontal.3")
                 .accentColor(Color.MyTheme.purpleColor)
@@ -39,18 +41,32 @@ struct ProfileView: View {
         }))
         .onAppear(perform: {
             getProfileImage()
+            getAdditionalProfileInfo()
         })
-        .sheet(isPresented: $showsSettings) {
-            SettingsView()
-        }
+        .sheet(isPresented: $showSettings, content: {
+            SettingsView(userDisplayName: $profileDisplayName, userBio: $profileBio, userProfilePicture: $profileImage)
+                .preferredColorScheme(colorScheme)
+        })
     }
     
     // MARK: FUNCTIONS
     
     func getProfileImage() {
-        ImageManager.instance.downloadProfileImage(userId: profileUserId) { returnedImage in
+        ImageManager.instance.downloadProfileImage(userId: profileUserId) { (returnedImage) in
             if let image = returnedImage {
                 self.profileImage = image
+            }
+        }
+    }
+    
+    func getAdditionalProfileInfo() {
+        AuthService.instance.getUserInfo(forUserId: profileUserId) { (returnedDisplayName, returnedBio) in
+            if let displayName = returnedDisplayName {
+                self.profileDisplayName = displayName
+            }
+            
+            if let bio = returnedBio {
+                self.profileBio = bio
             }
         }
     }

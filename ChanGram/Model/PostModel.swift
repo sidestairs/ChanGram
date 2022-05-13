@@ -19,16 +19,7 @@ struct PostModel: Identifiable, Hashable {
     var likeCount: Int
     var likedByUser:Bool
     
-    // postId
-    // userId
-    // user username
-    // caption - optional
-    // date
-    // likes count
-    // liked by current user
-    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
 }

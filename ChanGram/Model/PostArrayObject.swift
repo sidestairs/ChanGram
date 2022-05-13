@@ -10,19 +10,14 @@ import Foundation
 class PostArrayObject:ObservableObject {
     
     @Published var dataArray = [PostModel]()
+    @Published var postCountString = "0"
+    @Published var likeCountString = "0"
     
     init() {
-        print("FETCH FROM DATABASE")
+        print("Test Data")
         
         let post1 = PostModel( postId: "", userId: "", username: "Joe Green", caption: "This is caption", dateCreated: Date(), likeCount: 0, likedByUser: false)
-        let post2 = PostModel( postId: "", userId: "", username: "Jessica", caption: "This second caption", dateCreated: Date(), likeCount: 0, likedByUser: false)
-        let post3 = PostModel( postId: "", userId: "", username: "Thomas", caption: "This is a really long long long caption", dateCreated: Date(), likeCount: 0, likedByUser: false)
-        let post4 = PostModel( postId: "", userId: "", username: "Christopher", caption: nil, dateCreated: Date(), likeCount: 0, likedByUser: false)
-        
         self.dataArray.append(post1)
-        self.dataArray.append(post2)
-        self.dataArray.append(post3)
-        self.dataArray.append(post4)
     }
     
     /// USED FOR SINGLE POST SELECTION
@@ -33,7 +28,7 @@ class PostArrayObject:ObservableObject {
     /// USED FOR GETTING POST FOR USER PROFILE
     init(userId:String) {
         
-        print("get post from user id \(userId)")
+        print("GET POSTS FOR USER ID \(userId)")
         
         DataService.instance.downloadPostForUser(userId: userId) { returnedPosts in
             let sortedPost = returnedPosts.sorted { postA, postB in
@@ -44,18 +39,32 @@ class PostArrayObject:ObservableObject {
     }
     
     /// USED FOR FEED
-    init(shuffle:Bool) {
+    init(shuffled:Bool) {
         
-        print("getting all feed post")
+        print("GET POSTS FOR FEED. SHUFFLED: \(shuffled)")
         
         DataService.instance.downloadPostForFeed { returnedPosts in
-            if shuffle {
+            if shuffled {
                 let shuffledPost = returnedPosts.shuffled()
                 self.dataArray.append(contentsOf: shuffledPost)
             } else {
                 self.dataArray.append(contentsOf: returnedPosts)
             }
         }
+    }
+    
+    func updateCounts() {
+        
+        // post count
+        self.postCountString = "\(self.dataArray.count)"
+        
+        // like count
+        let likeCountArray = dataArray.map { (existingPost) -> Int in
+            return existingPost.likeCount
+        }
+        let sumOfLikeCountArray = likeCountArray.reduce(0, +)
+        self.likeCountString = "\(sumOfLikeCountArray)"
+        
     }
     
 }

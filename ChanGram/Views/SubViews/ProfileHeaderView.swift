@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    @Binding var profileDisplayName:String
-    @Binding var profileImage:UIImage
+    
+    @Binding var profileDisplayName: String
+    @Binding var profileImage: UIImage
+    @ObservedObject var postArray: PostArrayObject
+    @Binding var profileBio: String
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
@@ -26,11 +29,13 @@ struct ProfileHeaderView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            // MARK: Bio
-            Text("This is the area where they can add bio to their profile")
-                .font(.body)
-                .fontWeight(.regular)
-                .multilineTextAlignment(.center)
+            // MARK: BIO
+            if profileBio != "" {
+                Text(profileBio)
+                    .font(.body)
+                    .fontWeight(.regular)
+                    .multilineTextAlignment(.center)
+            }
             
             HStack(alignment: .center, spacing: 20) {
                 
@@ -73,10 +78,10 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     @State static var name: String = "Joe"
-    @State static var profileImage:UIImage = UIImage(named:"dog1")!
+    @State static var image: UIImage = UIImage(named: "dog1")!
     
     static var previews: some View {
-        ProfileHeaderView(profileDisplayName: $name, profileImage: $profileImage)
+        ProfileHeaderView(profileDisplayName: $name, profileImage: $image, postArray: PostArrayObject(shuffled: false), profileBio: $name)
             .previewLayout(.sizeThatFits)
     }
 }

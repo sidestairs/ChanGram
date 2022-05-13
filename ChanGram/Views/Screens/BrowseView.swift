@@ -24,7 +24,7 @@ struct BrowseView: View {
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BrowseView(post: PostArrayObject(shuffle: true))
+            BrowseView(post: PostArrayObject(shuffled: true))
         }
     }
 }

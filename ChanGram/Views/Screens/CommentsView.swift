@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct CommentsView: View {
+   
     @Environment(\.colorScheme) var colorScheme
-    
-    @State var submissionText:String = ""
+    @State var submissionText: String = ""
     @State var commentArray = [CommentModel]()
     
+    var post: PostModel
+    
+    @State var profilePicture: UIImage = UIImage(named: "logo.loading")!
+    
+    @AppStorage(CurrentUserDefaults.userId) var currentUserId: String?
+    @AppStorage(CurrentUserDefaults.displayName) var currentUserDisplayName: String?
     
     var body: some View {
         VStack {
@@ -25,7 +31,7 @@ struct CommentsView: View {
             }
             
             HStack {
-                Image("dog1")
+                Image(uiImage: profilePicture)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40, alignment: .center)
@@ -34,8 +40,9 @@ struct CommentsView: View {
                 TextField("Add a comment here...", text: $submissionText)
                 
                 Button {
-                    
-                    
+                    if textIsAppropriate() {
+                        addComment()
+                    }
                 } label: {
                     Image(systemName: "paperplane.fill").font(.title2)
                 }
@@ -48,27 +55,86 @@ struct CommentsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             getComments()
+            getProfilePicture()
         }
     }
     
     // MARK: FUNCTION
     
-    func getComments() {
-        print("Get comment from database")
-        let comment1 = CommentModel(commentId: "", userId: "", username: "Joe Green", content: "This is first comment", dateCreated: Date())
-        let comment2 = CommentModel(commentId: "", userId: "", username: "Johnson Duck", content: "This is second comment", dateCreated: Date())
-        let comment3 = CommentModel(commentId: "", userId: "", username: "Alex Tan", content: "This is third comment", dateCreated: Date())
+    func getProfilePicture() {
         
-        commentArray.append(comment1)
-        commentArray.append(comment2)
-        commentArray.append(comment3)
+        guard let userId = currentUserId else { return }
+        
+        ImageManager.instance.downloadProfileImage(userId: userId) { (returnedImage) in
+            if let image = returnedImage {
+                self.profilePicture = image
+            }
+        }
+    }
+    
+    func getComments() {
+        guard self.commentArray.isEmpty else { return }
+        print("GET COMMENTS FROM DATABASE")
+        
+        if let caption = post.caption, caption.count > 1 {
+            let captionComment = CommentModel(commentId: "", userId: post.userId, username: post.username, content: caption, dateCreated: post.dateCreated)
+            self.commentArray.append(captionComment)
+        }
+
+        DataService.instance.downloadComments(postId: post.postId) { (returnedComments) in
+            self.commentArray.append(contentsOf: returnedComments)
+        }
+    }
+    
+    func textIsAppropriate() -> Bool {
+        // Check if the text has curses
+        // Check if the text is long enough
+        // Check if the text is blank
+        // Check for innapropriate things
+        
+        
+        // Checking for bad words
+        let badWordArray: [String] = ["shit", "ass"]
+
+        let words = submissionText.components(separatedBy: " ")
+
+        for word in words {
+            if badWordArray.contains(word) {
+                return false
+            }
+        }
+        
+        // Checking for minimum character count
+        if submissionText.count < 3 {
+            return false
+        }
+        
+        return true
+    }
+    
+    func addComment() {
+        
+        guard let userId = currentUserId, let displayName = currentUserDisplayName else { return }
+        
+        DataService.instance.uploadComment(postId: post.postId, content: submissionText, displayName: displayName, userId: userId) { (success, returnedCommentId) in
+            if success, let commentId = returnedCommentId {
+                let newComment = CommentModel(commentId: commentId, userId: userId, username: displayName, content: submissionText, dateCreated: Date())
+                self.commentArray.append(newComment)
+                self.submissionText = ""
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        }
+        
     }
 }
 
 struct CommentsView_Previews: PreviewProvider {
+    
+    static let post = PostModel(postId: "asdf", userId: "asdf", username: "asdf", dateCreated: Date(), likeCount: 0, likedByUser: false)
+    
     static var previews: some View {
         NavigationView {
-            CommentsView()
+            CommentsView(post: post)
         }        
     }
 }

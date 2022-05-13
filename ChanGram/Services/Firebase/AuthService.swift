@@ -137,7 +137,7 @@ class AuthService {
         }
     }
     
-    // MARK: Get user function
+    // MARK: GET USER FUNCTIONS
     
     func getUserInfo(forUserId userId: String, handler: @escaping(_ name: String?, _ bio:String?)->()) {
         REF_USERS.document(userId).getDocument { documentSnapshot, error in
@@ -153,5 +153,45 @@ class AuthService {
                 return
             }
         }
+    }
+    
+    // MARK: UPDATE USER FUNCTIONS
+    
+    func updateUserDisplayName(userId: String, displayName: String, handler: @escaping (_ success: Bool) -> ()) {
+        
+        let data: [String:Any] = [
+            DatabaseUserField.displayName : displayName
+        ]
+        
+        REF_USERS.document(userId).updateData(data) { (error) in
+            if let error = error {
+                print("Error updating user display name. \(error)")
+                handler(false)
+                return
+            } else {
+                handler(true)
+                return
+            }
+        }
+        
+    }
+    
+    func updateUserBio(userId: String, bio: String, handler: @escaping (_ success: Bool) -> ()) {
+        
+        let data: [String:Any] = [
+            DatabaseUserField.bio : bio
+        ]
+        
+        REF_USERS.document(userId).updateData(data) { (error) in
+            if let error = error {
+                print("Error updating user display name. \(error)")
+                handler(false)
+                return
+            } else {
+                handler(true)
+                return
+            }
+        }
+        
     }
 }

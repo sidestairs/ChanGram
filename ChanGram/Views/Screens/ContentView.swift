@@ -14,8 +14,8 @@ struct ContentView: View {
     @AppStorage(CurrentUserDefaults.userId) var currentUserId:String?
     @AppStorage(CurrentUserDefaults.displayName) var currentUserDisplayName:String?
     
-    let feedpost = PostArrayObject(shuffle: false)
-    let browsePost = PostArrayObject(shuffle: true)
+    let feedpost = PostArrayObject(shuffled: false)
+    let browsePost = PostArrayObject(shuffled: true)
     
     var body: some View {
         TabView {

@@ -10,8 +10,8 @@ import SwiftUI
 
 
 struct CommentModel: Identifiable, Hashable {
-    var id = UUID()
     
+    var id = UUID()
     var commentId:String // ID from the database
     var userId:String // ID for the user in the database
     var username: String // username for the user in database
