@@ -176,14 +176,14 @@
 			children = (
 				FEBEAAA3282A28E1008076B8 /* Utilities */,
 				FE044D912828F71900EB19DE /* Services */,
-				FE044D902828F6E200EB19DE /* ChanGram.entitlements */,
 				FE6445772824C1FD001F22A7 /* Model */,
 				FE6445702824BD24001F22A7 /* Helpers */,
 				FE64456D2824BB37001F22A7 /* Views */,
+				FE6445632824B436001F22A7 /* Preview Content */,
 				FE6445612824B436001F22A7 /* Assets.xcassets */,
 				FE044D8E2828F57200EB19DE /* GoogleService-Info.plist */,
-				FE6445632824B436001F22A7 /* Preview Content */,
 				FE64456B2824B980001F22A7 /* LaunchScreen.storyboard */,
+				FE044D902828F6E200EB19DE /* ChanGram.entitlements */,
 			);
 			path = ChanGram;
 			sourceTree = "<group>";
