@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "cfa854c9c1073c4d1b83b20dfcb1ef7ceb85388b",
-        "version" : "9.0.0"
+        "revision" : "e8828e8efc813817b3c2cbfde8e965f7a7a26641",
+        "version" : "9.2.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "6a3123fab90f3884167990bee9bb30097d99c98c",
-        "version" : "9.0.0"
+        "revision" : "192cce3e0486aecfdb61102a9c694c78dc89dc48",
+        "version" : "9.1.0"
       }
     },
     {
@@ -57,10 +57,10 @@
     {
       "identity" : "googlesignin-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleSignIn-iOS.git",
+      "location" : "https://github.com/google/GoogleSignIn-iOS",
       "state" : {
-        "revision" : "60ca2bfd218ccb194a746a79b41d9d50eb7e3af0",
-        "version" : "6.1.0"
+        "revision" : "9450e779619fc184d360c9f7ce61023587f7e1f4",
+        "version" : "6.2.2"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/grpc/grpc-ios.git",
       "state" : {
-        "revision" : "abd2d5a4347efa0454606a788678a5d8ec223738",
-        "version" : "1.44.0-grpc"
+        "revision" : "2af4f6e9c2b18beae228f50b1198c641be859d2b",
+        "version" : "1.44.2-grpc"
       }
     },
     {
@@ -113,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
       "state" : {
-        "revision" : "7ee9ef9f627d85cbe1b8c4f49a3ed26eed216c77",
-        "version" : "2.30908.0"
+        "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
+        "version" : "2.30909.0"
       }
     },
     {
@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
-        "revision" : "46c1e6b5ac09d8f82c991061c659f67e573d425d",
-        "version" : "2.1.0"
+        "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
+        "version" : "2.1.1"
       }
     },
     {
